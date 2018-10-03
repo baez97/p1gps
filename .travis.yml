@@ -19,12 +19,14 @@ after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
 - export REPO=p1gps
 - export TAG=web
-- docker build -t $REPO/$TAG $TRAVIS_BUILD_DIR/deploy/docker/Clients - docker tag $REPO/$TAG $DOCKER_USER/$REPO:$TAG
+- docker build -t $REPO/$TAG $TRAVIS_BUILD_DIR/deploy/docker/Clients 
+- docker tag $REPO/$TAG $DOCKER_USER/$REPO:$TAG
 - docker push $DOCKER_USER/$REPO:$TAG
 - cp $TRAVIS_BUILD_DIR/src/Backend/OrderService/build/libs/ordering* $TRAVIS_BUILD_DIR/deploy/docker/Order/drop/ 
 # misma línea que la anterior
 - export TAG=order
-- docker build -t $REPO/$TAG $TRAVIS_BUILD_DIR/deploy/docker/Order - docker tag $REPO/$TAG $DOCKER_USER/$REPO:$TAG
+- docker build -t $REPO/$TAG $TRAVIS_BUILD_DIR/deploy/docker/Order 
+- docker tag $REPO/$TAG $DOCKER_USER/$REPO:$TAG
 - docker push $DOCKER_USER/$REPO:$TAG
 # no creamos la imagen de mongodb con el archivo mongorecords.js porque es estático y
 # ya lo hemos subido a DockerHub manualmente.
