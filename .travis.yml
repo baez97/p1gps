@@ -25,4 +25,5 @@ after_success:
 - export TAG=order
 - docker build -t $REPO/$TAG $TRAVIS_BUILD_DIR/deploy/docker/Order - docker tag $REPO/$TAG $DOCKER_USER/$REPO:$TAG
 - docker push $DOCKER_USER/$REPO:$TAG
-# no creamos la imagen de mongodb con el archivo mongorecords.js porque es estático y #ya lo hemos subido a DockerHub manualmente.
+# no creamos la imagen de mongodb con el archivo mongorecords.js porque es estático y
+# ya lo hemos subido a DockerHub manualmente.
